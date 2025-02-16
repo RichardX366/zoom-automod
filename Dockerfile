@@ -8,7 +8,6 @@ COPY .yarn ./.yarn
 
 FROM pre-install as prod-install
 RUN yarn workspaces focus --production
-RUN yarn build-modules
 
 FROM pre-install as build
 RUN yarn --immutable
