@@ -1,12 +1,12 @@
 import { RequestHandler } from 'express';
-import hmacSHA512 from 'crypto-js/hmac-sha512';
+import hmacSHA256 from 'crypto-js/hmac-sha256';
 
 export const sentMessage: RequestHandler = async (req, res) => {
   const { payload, event } = req.body;
 
   if (event === 'endpoint.url_validation') {
     const { plainToken } = payload;
-    const encryptedToken = hmacSHA512(
+    const encryptedToken = hmacSHA256(
       plainToken,
       process.env.ZOOM_SECRET || '',
     ).toString();
