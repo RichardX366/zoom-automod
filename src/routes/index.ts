@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import authRouter from './auth';
+import meetingRouter from './meeting';
 
 const baseRouter = Router();
 
@@ -7,6 +7,6 @@ baseRouter.get('/', (req, res) => {
   res.send('Everything works fine.');
 });
 
-baseRouter.use('/auth', authRouter);
+baseRouter.use('/meeting', meetingRouter);
 
 export default baseRouter;

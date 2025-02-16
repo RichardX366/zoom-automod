@@ -1,10 +1,6 @@
-FROM node:18-slim as pre-yarn
-# Use node:18-alpine if not using prisma
-# Required for prisma
-RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates && rm -rf /var/lib/apt/lists/*
+FROM node:18-alpine as pre-yarn
 WORKDIR /app
 COPY package.json yarn.lock ./
-COPY prisma ./prisma
 
 FROM pre-yarn as pre-install
 COPY .yarnrc.yml ./
