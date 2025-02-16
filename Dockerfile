@@ -1,7 +1,6 @@
 FROM node:18-alpine as pre-yarn
 WORKDIR /app
 COPY package.json yarn.lock ./
-RUN corepack enable
 
 FROM pre-yarn as pre-install
 COPY .yarnrc.yml ./
